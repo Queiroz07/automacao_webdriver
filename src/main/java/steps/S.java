@@ -5,12 +5,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
+import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.concurrent.TimeUnit;
 
 public class S {
     private WebDriver driver;
@@ -32,17 +32,19 @@ public class S {
     @Dado("que acesso a página ramblas assessoria")
     public void que_acesso_a_página_ramblas_assessoria() throws InterruptedException {
         driver.get("https://ramblasassessoria.com/");
-        Thread.sleep(5000);
+        Thread.sleep(1000);
     }
 
     @Quando("clico no botão QA")
-    public void clico_no_botão_qa() {
-
+    public void clico_no_botão_qa() throws InterruptedException {
+        driver.findElement(By.id("id2")).click();
+        Thread.sleep(1000);
     }
 
-    @Entao("devo validar o botão Ir para o topo")
-    public void devo_validar_o_botão_ir_para_o_topo() {
-
+    @Entao("devo clicar o botão Ir para o topo")
+    public void devo_clicar_o_botão_ir_para_o_topo() throws InterruptedException {
+        driver.findElement(By.cssSelector("[class=\"scroll-to-top\"]")).click();
+        Thread.sleep(1000);
     }
 
 }
